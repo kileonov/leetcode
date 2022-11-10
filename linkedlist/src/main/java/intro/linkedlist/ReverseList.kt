@@ -1,23 +1,16 @@
 package intro.linkedlist
 
-class ReverseList {
+fun reverseList(head: ListNode?): ListNode? {
+    var currentNode = head
+    var prevNode: ListNode? = null
 
-    class ListNode(var `val`: Int) {
-        var next: ListNode? = null
+    while (currentNode != null) {
+        val temp = currentNode.next
+        currentNode.next = prevNode
+
+        prevNode = currentNode
+        currentNode = temp
     }
 
-    fun reverseList(head: ListNode?): ListNode? {
-        var currentNode = head
-        var prevNode: ListNode? = null
-
-        while (currentNode != null) {
-            val temp = currentNode.next
-            currentNode.next = prevNode
-
-            prevNode = currentNode
-            currentNode = temp
-        }
-
-        return prevNode
-    }
+    return prevNode
 }

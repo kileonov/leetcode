@@ -1,22 +1,15 @@
 package intro.linkedlist
 
-class HasCycle {
+fun hasCycle(head: ListNode?): Boolean {
+    var slowPointer = head
+    var fastPointer = head
 
-    internal class ListNode(var `val`: Int) {
-        var next: ListNode? = null
+    while(fastPointer?.next?.next != null) {
+        slowPointer = slowPointer?.next
+        fastPointer = fastPointer.next?.next
+
+        if (slowPointer != fastPointer) return true
     }
 
-    internal fun hasCycle(head: ListNode?): Boolean {
-        var slowPointer = head
-        var fastPointer = head
-
-        while(fastPointer?.next?.next != null) {
-            slowPointer = slowPointer?.next
-            fastPointer = fastPointer.next?.next
-
-            if (slowPointer != fastPointer) return true
-        }
-
-        return false
-    }
+    return false
 }

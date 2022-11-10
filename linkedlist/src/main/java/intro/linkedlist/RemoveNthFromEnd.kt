@@ -1,29 +1,22 @@
 package intro.linkedlist
 
-class RemoveNthFromEnd {
+fun removeNthFromEnd(head: ListNode?, n: Int): ListNode? {
+    var fastNode = head
 
-    class ListNode(var `val`: Int) {
-        var next: ListNode? = null
+    for (i in 0 until n) {
+        fastNode = fastNode?.next
     }
 
-    fun removeNthFromEnd(head: ListNode?, n: Int): ListNode? {
-        var fastNode = head
+    if (fastNode == null) return head?.next
 
-        for (i in 0 until n) {
-            fastNode = fastNode?.next
-        }
+    var slowNode = head
 
-        if (fastNode == null) return head?.next
-
-        var slowNode = head
-
-        while (fastNode?.next != null) {
-            fastNode = fastNode.next
-            slowNode = slowNode?.next
-        }
-
-        slowNode?.next = slowNode?.next?.next
-
-        return head
+    while (fastNode?.next != null) {
+        fastNode = fastNode.next
+        slowNode = slowNode?.next
     }
+
+    slowNode?.next = slowNode?.next?.next
+
+    return head
 }
