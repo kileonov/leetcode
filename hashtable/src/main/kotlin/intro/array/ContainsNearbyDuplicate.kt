@@ -1,15 +1,14 @@
 package intro.array
 
-import kotlin.math.abs
-
 fun containsNearbyDuplicate(nums: IntArray, k: Int): Boolean {
-    val numToEntries = HashMap<Int, Int>(nums.size)
+    val indicesSet = HashSet<Int>(k + 1)
 
     for ((index, num) in nums.withIndex()) {
-        if (numToEntries.containsKey(num)) {
-            if (abs(numToEntries.getValue(num) - index) <= k) return true
+        if (indicesSet.contains(num)) return true
+        indicesSet += num
+        if (indicesSet.size > k) {
+            indicesSet.remove(nums[index - k])
         }
-        numToEntries[num] = index
     }
 
     return false
