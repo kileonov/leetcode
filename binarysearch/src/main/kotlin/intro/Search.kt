@@ -15,3 +15,26 @@ fun search(nums: IntArray, target: Int): Int {
 
     return -1
 }
+fun searchRotated(nums: IntArray, target: Int): Int {
+    if (nums.isEmpty()) return -1
+
+    var l = 0
+    var h = nums.lastIndex
+    while (l <= h) {
+        val mid = (l + h) / 2
+        if (nums[mid] == target) return mid
+        when {
+            nums[l] <= nums[mid] -> {
+                if (target >= nums[l] && target < nums[mid]) h = mid - 1
+                else l = mid + 1
+            }
+            nums[mid] <= nums[h] -> {
+                if (target <= nums[h] && target > nums[mid]) l = mid + 1
+                else h = mid - 1
+            }
+            else -> return -1
+        }
+    }
+
+    return -1
+}
