@@ -7,3 +7,8 @@ class ListNode(var `val`: Int) {
         return "ListNode(`val`=$`val`)"
     }
 }
+
+class TreeNode(var `val`: Int) {
+    var left: TreeNode? = null
+    var right: TreeNode? = null
+}
