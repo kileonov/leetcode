@@ -16,3 +16,7 @@ class TreeNode(var `val`: Int) {
         return "TreeNode(`val`=$`val`)"
     }
 }
+
+class Node(var `val`: Int) {
+    var children: List<Node?> = listOf()
+}
